@@ -30,6 +30,8 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     call dein#add('skwp/greplace.vim')
     " install nerd commenter
     call dein#add('scrooloose/nerdcommenter')
+    " install nerd solarized colors
+    call dein#add('altercation/vim-colors-solarized')
     " install deoplete.nvim
     call dein#add('Shougo/deoplete.nvim')
     " install deoplete
@@ -229,6 +231,8 @@ set statusline+=\ %P    "percent through file
 " settings of Cheng s3341458 ---------------------- {{{
 " enable syntax highlighting
 syntax enable
+set background=dark
+colorscheme solarized
 
 " show line numbers
 set number
