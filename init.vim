@@ -231,8 +231,6 @@ set statusline+=\ %P    "percent through file
 " settings of Cheng s3341458 ---------------------- {{{
 " enable syntax highlighting
 syntax enable
-set background=dark
-colorscheme solarized
 
 " show line numbers
 set number
@@ -315,7 +313,19 @@ endif
     map <C-n> :NERDTreeToggle<CR>
 " }}}
 
+" solarized plugin customization ---------------------- {{{
+    " terminal colors support 256
+    let g:solarized_termcolors=256
+    " using the dark theme to protect eyes
+    set background=light
+    " termial transparent since I have already adjust my terminal
+    " to my most eye comfortable color
+    let g:solarized_termtrans=1
+    colorscheme solarized
+" }}}
+
 " ag plugin customization ---------------------- {{{
+
 nnoremap <leader>a :set operatorfunc=<SID>AgOperator<cr>g@
 vnoremap <leader>a :<c-u>call <SID>AgOperator(visualmode())<cr>
 
