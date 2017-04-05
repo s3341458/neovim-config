@@ -317,7 +317,7 @@ endif
     " terminal colors support 256
     let g:solarized_termcolors=256
     " using the dark theme to protect eyes
-    set background=light
+    set background=dark
     " termial transparent since I have already adjust my terminal
     " to my most eye comfortable color
     let g:solarized_termtrans=1
