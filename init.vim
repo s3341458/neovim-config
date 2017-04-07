@@ -129,10 +129,17 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 
 " navigate to different window
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" shortcut for exit terminal emulator
+tnoremap <C-q> <C-\><C-n>
 
 " H move the first of the line, L move to the last of the line
 nnoremap H ^
@@ -188,7 +195,8 @@ vnoremap <leader>g :execute "grep! -R " . shellescape(expand('<,'>)) . " ."<cr>:
 " }}}
 
 " command mode remaps of Cheng s3341459 ---------------------- {{{
-" shortcut grep search
+" split a teminal for operating
+
 
 " }}}
 
