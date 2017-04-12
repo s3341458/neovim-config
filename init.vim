@@ -38,6 +38,8 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     call dein#add('zchee/deoplete-jedi')
     " install ternjs
     call dein#add('carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' })
+    " install trailing white space fix
+    call dein#add('bronson/vim-trailing-whitespace')
 
     " You can specify revision/branch/tag.
     " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -280,9 +282,6 @@ set noignorecase
 
 " open quick fix window in a new tab
   set switchbuf+=newtab
-
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
 
 filetype off
 filetype plugin indent on
