@@ -385,3 +385,30 @@ endfunction
     " tern
     autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 " }}}
+
+" Greplace plugin customization ---------------------- {{{
+    nnoremap <leader>g :set operatorfunc=<SID>GsearchOperator<cr>g@
+    vnoremap <leader>g :<c-u>call <SID>GsearchOperator(visualmode())<cr>
+    nnoremap <leader>r :<c-u>call <SID>GreplaceOperator()<cr>
+
+    function! s:GsearchOperator(type)
+        let saved_unnamed_register = @@
+
+        if a:type ==# 'v'
+                normal! `<v`>y
+        elseif a:type ==# 'char'
+                normal! `[v`]y
+        else
+                return
+        endif
+
+        execute "Gsearch " . shellescape(@@) . " ."
+
+        let @@ = saved_unnamed_register
+    endfunction
+
+    function! s:GreplaceOperator()
+        execute "Greplace"
+    endfunction
+" }}}
+
