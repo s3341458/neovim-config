@@ -171,6 +171,18 @@ nnoremap = ddkP
 nnoremap <leader>g :execute "grep! -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
 nnoremap <leader>G :execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 
+" tab swtich shortcuts
+nnoremap <A-1> 1gt
+nnoremap <A-2> 2gt
+nnoremap <A-3> 3gt
+nnoremap <A-4> 4gt
+nnoremap <A-5> 5gt
+nnoremap <A-6> 6gt
+nnoremap <A-7> 7gt
+nnoremap <A-8> 8gt
+nnoremap <A-9> 9gt
+nnoremap <A-0> 10gt
+
 " my operator from learn vimscript the hard way
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F)vi(<cr>
@@ -347,7 +359,7 @@ function! s:AgOperator(type)
             return
     endif
 
-    execute "Ag -Q " . shellescape(@@) . " ."
+    execute "Ag -Q " . shellescape(@@) . " "
     copen
 
     let @@ = saved_unnamed_register
