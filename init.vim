@@ -131,17 +131,10 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 
 " navigate to different window
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
-
-" shortcut for exit terminal emulator
-tnoremap <C-q> <C-\><C-n>
 
 " H move the first of the line, L move to the last of the line
 nnoremap H ^
@@ -186,6 +179,19 @@ nnoremap <A-0> 10gt
 " my operator from learn vimscript the hard way
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F)vi(<cr>
+
+" }}}
+
+" terminal mod remaps of Cheng s3341458 ---------------------- {{{
+"
+" navigate to different window
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+
+" shortcut for terminal emulator true normal mode
+tnoremap <A-n> <C-\><C-n>
 
 " }}}
 
@@ -274,6 +280,9 @@ set cursorline
 
 " show the matching part of the pair for [] {} and ()
 set showmatch
+
+" have a length indication column at col 80
+set colorcolumn=80
 
 " hightlight matched pattern of search last typed
 set hlsearch
