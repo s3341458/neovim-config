@@ -423,7 +423,7 @@ endfunction
                 return
         endif
 
-        execute "Gsearch " . shellescape(@@) . " ."
+        execute "Gsearch -F " . shellescape(@@) . " ."
 
         let @@ = saved_unnamed_register
     endfunction
