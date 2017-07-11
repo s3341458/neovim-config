@@ -248,6 +248,14 @@ augroup highlight_trailing_space
     autocmd BufWinLeave * call clearmatches()
 augroup END
 
+" ensure absolute line number when lose focus or into insert mode
+augroup line_number_abosolute
+    autocmd FocusLost * :set norelativenumber
+    autocmd FocusGained * :set relativenumber
+    autocmd InsertEnter * :set norelativenumber
+    autocmd InsertLeave * :set relativenumber
+augroup END
+
 " status indicator
 set statusline=%f         " Path to the file
 set statusline+=%=        " Switch to the right side
