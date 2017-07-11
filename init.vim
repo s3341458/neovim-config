@@ -110,9 +110,10 @@ inoremap <c-b> <esc>bhdei
 " }}}
 
 " normal mod remaps of Cheng s3341458 ---------------------- {{{
-" disable arrow keys
 nnoremap <leader>tm :call ToggleModeJump()<cr>
+nnoremap <A-n> :call LineNumberToggle()<cr>
 
+" function for toggle customized motion shortcuts
 function! ToggleModeJump()
     if g:enable_jump_normal
         call TurnOffJumpNormalShortcuts()
@@ -125,6 +126,16 @@ function! ToggleModeJump()
     endif
 endfunction
 
+" function for toggle line number showing style(relative or aboslute)
+function! LineNumberToggle()
+  if &relativenumber == 1
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
+
+" disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -262,6 +273,7 @@ syntax enable
 
 " show line numbers
 set number
+set relativenumber
 
 " set tabs to have 4 spaces
 let &ts=4
