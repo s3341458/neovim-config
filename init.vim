@@ -1,5 +1,5 @@
 
-"dein Scripts-----------------------------
+" package manager dein Scripts----------------------------- {{{
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -40,6 +40,8 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     call dein#add('carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' })
     " install trailing white space fix
     call dein#add('bronson/vim-trailing-whitespace')
+    " install js beautifier
+    call dein#add('maksimr/vim-jsbeautify')
 
     " You can specify revision/branch/tag.
     " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -59,6 +61,7 @@ if dein#check_install()
 endif
 
 "End dein Scripts----------------------
+" }}}
 
 
 " Vimscript file settings ---------------------- {{{
@@ -452,4 +455,3 @@ endfunction
         execute "Greplace"
     endfunction
 " }}}
-
