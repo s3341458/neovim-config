@@ -194,6 +194,9 @@ nnoremap <A-0> 10gt
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F)vi(<cr>
 
+" toggle highlight search
+nnoremap <F3> :set hlsearch!<CR>
+
 " }}}
 
 " terminal mod remaps of Cheng s3341458 ---------------------- {{{
