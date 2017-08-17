@@ -113,8 +113,11 @@ inoremap <c-b> <esc>bhdei
 " }}}
 
 " normal mod remaps of Cheng s3341458 ---------------------- {{{
-nnoremap <leader>tm :call ToggleModeJump()<cr>
-nnoremap <A-n> :call LineNumberToggle()<cr>
+nnoremap <F2> :call ToggleModeJump()<cr>
+nnoremap <F3> :call LineNumberToggle()<cr>
+" toggle highlight search
+nnoremap <F4> :call HighlightSearchToggle()<cr>
+
 
 " function for toggle customized motion shortcuts
 function! ToggleModeJump()
@@ -133,10 +136,24 @@ endfunction
 function! LineNumberToggle()
   if &relativenumber == 1
     set norelativenumber
+    echo "using absolute line number"
   else
     set relativenumber
+    echo "using relative line number"
   endif
 endfunc
+
+" function for toggle whether highlight should be shown
+function! HighlightSearchToggle()
+  if &hlsearch == 1
+    set nohlsearch
+    echo "not highlighting search"
+  else
+    set hlsearch
+    echo "highlighting search"
+  endif
+endfunc
+
 
 " disable arrow keys
 noremap <Up> <Nop>
@@ -193,9 +210,6 @@ nnoremap <A-0> 10gt
 " my operator from learn vimscript the hard way
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F)vi(<cr>
-
-" toggle highlight search
-nnoremap <F3> :set hlsearch!<CR>
 
 " }}}
 
