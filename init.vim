@@ -380,6 +380,13 @@ endif
     " Ctrl + n toggle nerdTree
     map <C-n> :NERDTreeToggle<CR>
 " }}}
+"
+" ctrlp plugin customization ---------------------- {{{
+    " almost ulimited search depth 40
+    let g:ctrlp_max_depth=40
+    " ulimited search files limit
+    let g:ctrlp_max_files=0
+" }}}
 
 " solarized plugin customization ---------------------- {{{
     " terminal colors support 256
