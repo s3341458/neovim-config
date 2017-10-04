@@ -42,6 +42,9 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     call dein#add('bronson/vim-trailing-whitespace')
     " install js beautifier
     call dein#add('maksimr/vim-jsbeautify')
+    " install fugitive for easy git operation
+    call dein#add('tpope/vim-fugitive')
+
 
     " You can specify revision/branch/tag.
     " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
