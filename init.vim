@@ -44,6 +44,8 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     call dein#add('maksimr/vim-jsbeautify')
     " install fugitive for easy git operation
     call dein#add('tpope/vim-fugitive')
+    " install emmet for easy html generation
+    call dein#add('mattn/emmet-vim')
 
 
     " You can specify revision/branch/tag.
@@ -79,6 +81,8 @@ let mapleader = ";"
 
 let g:enable_jump_normal = 1
 
+let g:disable_arrow_keys = 1
+
 " pr means print
 iabbrev pr print()
 
@@ -102,7 +106,6 @@ function! TurnOffJumpNormalShortcuts()
     inoremap kj kj
 endfunction
 
-call TurnOnJumpNormalShortcuts()
 
 " can delete entire line on edit
 inoremap <c-d> <esc>ddi
@@ -120,6 +123,7 @@ nnoremap <F2> :call ToggleModeJump()<cr>
 nnoremap <F3> :call LineNumberToggle()<cr>
 " toggle highlight search
 nnoremap <F4> :call HighlightSearchToggle()<cr>
+nnoremap <F5> :call ArrowDisableToggle()<cr>
 
 
 " function for toggle customized motion shortcuts
@@ -158,11 +162,27 @@ function! HighlightSearchToggle()
 endfunc
 
 
-" disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+" function for toggle disable or enable arrow keys
+function! ArrowDisableToggle()
+    if g:disable_arrow_keys
+        noremap <Up> <Nop>
+        noremap <Down> <Nop>
+        noremap <Left> <Nop>
+        noremap <Right> <Nop>
+        echo "disable arrow keys"
+        let g:disable_arrow_keys = 0
+    else
+        noremap <Up> <Up>
+        noremap <Down> <Down>
+        noremap <Left> <Left>
+        noremap <Right> <Right>
+        echo "enable arrow keys"
+        let g:disable_arrow_keys = 1
+    endif
+endfunc
+
+call ArrowDisableToggle()
+call TurnOnJumpNormalShortcuts()
 
 " navigate to different window
 nnoremap <A-h> <C-w>h
@@ -383,12 +403,26 @@ endif
     " Ctrl + n toggle nerdTree
     map <C-n> :NERDTreeToggle<CR>
 " }}}
-"
+
 " ctrlp plugin customization ---------------------- {{{
     " almost ulimited search depth 40
     let g:ctrlp_max_depth=40
     " ulimited search files limit
     let g:ctrlp_max_files=0
+" }}}
+
+" emmet plugin customizations ---------------------- {{{
+    let g:user_emmet_mode='a'    "enable all function in all mode.
+
+    " only when it is in html or css files
+    let g:user_emmet_install_global = 0
+    augroup emmet_only_on_html_css
+        autocmd!
+        autocmd FileType html,css EmmetInstall
+    augroup END
+    " remap the shortcut key rm
+    "let g:user_emmet_leader_key='<C-Y>'
+
 " }}}
 
 " solarized plugin customization ---------------------- {{{
@@ -428,8 +462,17 @@ endfunction
 
 " neocomplete plugin customization ---------------------- {{{
     " refer to https://www.gregjs.com/vim/2016/configuring-the-deoplete-asynchronous-keyword-completion-plugin-with-tern-for-vim/
+    " Disable AutoComplPop.
+    let g:acp_enableAtStartup = 0
     " Use deoplete on start
     let g:deoplete#enable_at_startup = 1
+    " Use smartcase.
+    let g:deoplete#enable_smart_case = 1
+    " Set minimum syntax keyword length.
+    let g:deoplete#sources#syntax#min_keyword_length = 2
+    " AutoComplPop like behavior.
+    let g:neocomplete#enable_auto_select = 0
+
     if !exists('g:deoplete#omni#input_patterns')
       let g:deoplete#omni#input_patterns = {}
     endif
