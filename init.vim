@@ -264,8 +264,9 @@ vnoremap // y/<C-R>"<CR>
 " able to copy things and paste things outside vim"
 vnoremap <C-c> "+y
 
-" grep selected word
-vnoremap <leader>g :execute "grep! -R " . shellescape(expand('<,'>)) . " ."<cr>:copen<cr>
+" file substitue replace command shortcut
+vnoremap r y:%s/<C-r>"/<C-r>"/g<C-b>
+vnoremap R y:%s/<C-r>"//g<C-b>
 " }}}
 
 " command mode remaps of Cheng s3341459 ---------------------- {{{
@@ -477,7 +478,7 @@ endfunction
       let g:deoplete#omni#input_patterns = {}
     endif
     " let g:deoplete#disable_auto_complete = 1
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    "autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
     " omnifuncs
     augroup omnifuncs
