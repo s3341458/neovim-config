@@ -230,9 +230,14 @@ nnoremap <A-8> 8gt
 nnoremap <A-9> 9gt
 nnoremap <A-0> 10gt
 
+" shortcut for close tab
+nnoremap <A-q> :tabclose<cr>
+
+
 " my operator from learn vimscript the hard way
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F)vi(<cr>
+
 
 " }}}
 
