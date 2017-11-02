@@ -231,7 +231,7 @@ nnoremap <A-9> 9gt
 nnoremap <A-0> 10gt
 
 " shortcut for close tab
-nnoremap <A-Q> :tabclose<cr>
+nnoremap <A-q> :tabclose<cr>
 
 
 " my operator from learn vimscript the hard way
