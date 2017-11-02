@@ -229,6 +229,10 @@ nnoremap <A-7> 7gt
 nnoremap <A-8> 8gt
 nnoremap <A-9> 9gt
 nnoremap <A-0> 10gt
+nnoremap <A-H> gT
+nnoremap <A-L> gt
+
+
 
 " shortcut for close tab
 nnoremap <A-q> :tabclose<cr>
