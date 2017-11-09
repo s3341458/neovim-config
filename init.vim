@@ -123,7 +123,10 @@ nnoremap <F2> :call ToggleModeJump()<cr>
 nnoremap <F3> :call LineNumberToggle()<cr>
 " toggle highlight search
 nnoremap <F4> :call HighlightSearchToggle()<cr>
+" toggle whether arrow key should be disabled
 nnoremap <F5> :call ArrowDisableToggle()<cr>
+" toggle whether use 4 spaces or 2 spaces for tab
+nnoremap <F6> :call TabStrategyToggle()<cr>
 
 
 " function for toggle customized motion shortcuts
@@ -161,6 +164,17 @@ function! HighlightSearchToggle()
   endif
 endfunc
 
+function! TabStrategyToggle()
+  if &ts == 4
+    let &ts=2
+    let &shiftwidth=2
+    echo "tab for two spaces"
+  else
+    let &ts=4
+    let &shiftwidth=4
+    echo "tab for four spaces"
+  endif
+endfunc
 
 " function for toggle disable or enable arrow keys
 function! ArrowDisableToggle()
