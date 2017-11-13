@@ -144,36 +144,41 @@ endfunction
 
 " function for toggle line number showing style(relative or aboslute)
 function! LineNumberToggle()
-  if &relativenumber == 1
-    set norelativenumber
-    echo "using absolute line number"
-  else
-    set relativenumber
-    echo "using relative line number"
-  endif
+    if &relativenumber == 1
+        set norelativenumber
+        echo "using absolute line number"
+    else
+        set relativenumber
+        echo "using relative line number"
+    endif
 endfunc
 
 " function for toggle whether highlight should be shown
 function! HighlightSearchToggle()
-  if &hlsearch == 1
-    set nohlsearch
-    echo "not highlighting search"
-  else
-    set hlsearch
-    echo "highlighting search"
-  endif
+    if &hlsearch == 1
+        set nohlsearch
+        echo "not highlighting search"
+    else
+        set hlsearch
+        echo "highlighting search"
+    endif
+endfunc
+
+function! TwoSpaceTabStrategy()
+    set tabstop=2 softtabstop=2 shiftwidth=2
+    echo "tab for two spaces"
+endfunc
+function! FourSpaceTabStrategy()
+    set tabstop=4 softtabstop=4 shiftwidth=4
+    echo "tab for four spaces"
 endfunc
 
 function! TabStrategyToggle()
-  if &ts == 4
-    let &ts=2
-    let &shiftwidth=2
-    echo "tab for two spaces"
-  else
-    let &ts=4
-    let &shiftwidth=4
-    echo "tab for four spaces"
-  endif
+    if &tabstop == 4
+        call TwoSpaceTabStrategy()
+    else
+        call FourSpaceTabStrategy()
+    endif
 endfunc
 
 " function for toggle disable or enable arrow keys
@@ -323,6 +328,13 @@ augroup line_number_abosolute
     autocmd InsertLeave * :set relativenumber
 augroup END
 
+
+augroup set_tab_space
+    " ensure by default js html and css using 2 space indention
+    autocmd BufNewFile,BufRead *.html,*.js,*.css: call TwoSpaceTabStrategy()
+augroup END
+
+
 " status indicator
 set statusline=%f         " Path to the file
 set statusline+=%=        " Switch to the right side
@@ -346,12 +358,12 @@ set statusline+=\ %P    "percent through file
 " enable syntax highlighting
 syntax enable
 
+" by default one tab shoudl equals to four spaces
+: call FourSpaceTabStrategy()
+
 " show line numbers
 set number
 set relativenumber
-
-" set tabs to have 4 spaces
-let &ts=4
 
 " indent when moving to the next line while writing code
 set autoindent
@@ -359,8 +371,8 @@ set autoindent
 " expand tabs into spaces
 set expandtab
 
-" when using the >> or << commands, shift lines by 4 spaces
-let &shiftwidth=4
+" smarttab
+set smarttab
 
 " show a visual line under the cursor's current line
 set cursorline
