@@ -46,8 +46,11 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     call dein#add('tpope/vim-fugitive')
     " install emmet for easy html generation
     call dein#add('mattn/emmet-vim')
-
-
+    " install airline for better status line
+    call dein#add('vim-airline/vim-airline')
+    call dein#add('vim-airline/vim-airline-themes')
+    " install tmux line tool for better ariline integration in tmux context
+    call dein#add('edkolev/tmuxline.vim')
     " You can specify revision/branch/tag.
     " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
@@ -255,6 +258,8 @@ nnoremap <A-L> gt
 
 " shortcut for close tab
 nnoremap <A-q> :tabclose<cr>
+" shortcut for close window
+nnoremap <A-w> :wq<cr>
 
 
 " my operator from learn vimscript the hard way
@@ -333,26 +338,6 @@ augroup set_tab_space
     " ensure by default js html and css using 2 space indention
     autocmd BufNewFile,BufRead *.html,*.js,*.css: call TwoSpaceTabStrategy()
 augroup END
-
-
-" status indicator
-set statusline=%f         " Path to the file
-set statusline+=%=        " Switch to the right side
-set statusline+=%l        " Current line
-set statusline+=/         " Separator
-set statusline+=%L        " Total lines
-set statusline=%t       "tail of the filename
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=%y      "fisetype
-set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
-
 
 " settings of Cheng s3341458 ---------------------- {{{
 " enable syntax highlighting
@@ -445,6 +430,10 @@ endif
     let g:ctrlp_max_depth=40
     " ulimited search files limit
     let g:ctrlp_max_files=0
+" }}}
+"
+" tmux line plugin customization ---------------------- {{{
+   let g:tmuxline_powerline_separators = 1
 " }}}
 
 " emmet plugin customizations ---------------------- {{{
@@ -561,3 +550,5 @@ endfunction
         execute "Greplace"
     endfunction
 " }}}
+
+
