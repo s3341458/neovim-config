@@ -1,4 +1,5 @@
 
+
 " package manager dein Scripts----------------------------- {{{
 if &compatible
   set nocompatible               " Be iMproved
@@ -14,10 +15,8 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     " Let dein manage dein
     " Required:
     call dein#add('/home/chengyu/.config/nvim/dein//repos/github.com/Shougo/dein.vim')
-
     " Add or remove your plugins here:
-    call dein#add('Shougo/neosnippet.vim')
-    call dein#add('Shougo/neosnippet-snippets')
+
     " install nerd-tree
     call dein#add('scrooloose/nerdtree')
     " install ctrlp
@@ -38,6 +37,8 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     call dein#add('zchee/deoplete-jedi')
     " install ternjs
     call dein#add('carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' })
+    "call dein#add('Shougo/neosnippet.vim')
+    "call dein#add('Shougo/neosnippet-snippets')
     " install trailing white space fix
     call dein#add('bronson/vim-trailing-whitespace')
     " install js beautifier
