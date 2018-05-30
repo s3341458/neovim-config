@@ -54,6 +54,8 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     call dein#add('edkolev/tmuxline.vim')
     " You can specify revision/branch/tag.
     " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+    " remote debugger plugin
+    call dein#add('vim-vdebug/vdebug')
 
     " Required:
     call dein#end()
@@ -89,6 +91,9 @@ let g:disable_arrow_keys = 1
 
 " pr means print
 iabbrev pr print()
+
+" esc key broken
+noremap zz <esc>
 
 " edit mod remaps of Cheng s3341458 ---------------------- {{{
 " obvious cursor movement will cause vim enter command mod
@@ -238,8 +243,8 @@ nnoremap = ddkP
 
 " grep shortcuts
 " nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
-nnoremap <leader>g :execute "grep! -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
-nnoremap <leader>G :execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
+"nnoremap <leader>g :execute "grep! -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr>
+"nnoremap <leader>G :execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 
 " tab swtich shortcuts
 nnoremap <A-1> 1gt
@@ -387,7 +392,7 @@ set splitright
 set noignorecase
 
 " open quick fix window in a new tab
-  set switchbuf+=newtab
+set switchbuf+=newtab
 
 filetype off
 filetype plugin indent on
@@ -552,4 +557,21 @@ endfunction
     endfunction
 " }}}
 
+" debug plugin customization ---------------------- {{{
+    " remap vdebug keymap
+    let g:vdebug_keymap = {
+    \    "run" : "<C-F5>",
+    \    "run_to_cursor" : "<C-F9>",
+    \    "step_over" : "<C-F2>",
+    \    "step_into" : "<C-F3>",
+    \    "step_out" : "<C-F4>",
+    \    "close" : "<C-F6>",
+    \    "detach" : "<C-F7>",
+    \    "set_breakpoint" : "<C-F10>",
+    \    "get_context" : "<C-F11>",
+    \    "eval_under_cursor" : "<C-F12>",
+    \    "eval_visual" : "<Leader>e",
+    \}
+
+" }}}
 
