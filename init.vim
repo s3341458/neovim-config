@@ -1,6 +1,6 @@
 
 
-" package manager dein Scripts----------------------------- {{{
+" package mvim-vdebug/vdebugavim-vdebug/vdebugnager dein Scripts----------------------------- {{{
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -56,6 +56,9 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
     " remote debugger plugin
     call dein#add('vim-vdebug/vdebug')
+    " motion enhancement plugin
+    " call dein#add('justinmk/vim-sneak')
+    call dein#add('easymotion/vim-easymotion')
 
     " Required:
     call dein#end()
@@ -575,3 +578,7 @@ endfunction
 
 " }}}
 
+" easy motion plugin customization ---------------------- {{{
+" no mapping confliction at the moment
+    map <Leader> <Plug>(easymotion-prefix)
+" }}}
