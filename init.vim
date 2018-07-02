@@ -57,8 +57,9 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     " remote debugger plugin
     call dein#add('vim-vdebug/vdebug')
     " motion enhancement plugin
-    " call dein#add('justinmk/vim-sneak')
     call dein#add('easymotion/vim-easymotion')
+    " auto save plugin save :w
+    call dein#add('907th/vim-auto-save')
 
     " Required:
     call dein#end()
@@ -581,4 +582,9 @@ endfunction
 " easy motion plugin customization ---------------------- {{{
 " no mapping confliction at the moment
     map <Leader> <Plug>(easymotion-prefix)
+" }}}
+"
+" auto save plugin customization ---------------------- {{{
+    let g:auto_save = 1  " enable AutoSave on Vim startup
+    let g:auto_save_events = ["InsertLeave", "TextChanged"]
 " }}}
