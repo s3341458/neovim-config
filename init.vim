@@ -1,5 +1,3 @@
-
-
 " package mvim-vdebug/vdebugavim-vdebug/vdebugnager dein Scripts----------------------------- {{{
 if &compatible
   set nocompatible               " Be iMproved
@@ -60,6 +58,8 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     call dein#add('easymotion/vim-easymotion')
     " auto save plugin save :w
     call dein#add('907th/vim-auto-save')
+    " add prettier
+    call dein#add('prettier/vim-prettier', { 'do': 'yarn global add prettier' })
 
     " Required:
     call dein#end()
@@ -587,4 +587,14 @@ endfunction
 " auto save plugin customization ---------------------- {{{
     let g:auto_save = 1  " enable AutoSave on Vim startup
     let g:auto_save_events = ["InsertLeave", "TextChanged"]
+" }}}
+
+" prettier plugin customization ---------------------- {{{
+    let g:prettier#exec_cmd_async = 1   " enable asynchronous execute
+
+    " when running at every change you may want to disable quickfix
+    "let g:prettier#quickfix_enabled = 0
+
+    "let g:prettier#autoformat = 0
+    "autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 " }}}
