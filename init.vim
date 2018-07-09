@@ -58,8 +58,8 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     call dein#add('easymotion/vim-easymotion')
     " auto save plugin save :w
     call dein#add('907th/vim-auto-save')
-    " add prettier
-    call dein#add('prettier/vim-prettier', { 'do': 'yarn global add prettier' })
+    " add ale
+    call dein#add('w0rp/ale')
 
     " Required:
     call dein#end()
@@ -583,18 +583,25 @@ endfunction
 " no mapping confliction at the moment
     map <Leader> <Plug>(easymotion-prefix)
 " }}}
-"
+
 " auto save plugin customization ---------------------- {{{
     let g:auto_save = 1  " enable AutoSave on Vim startup
     let g:auto_save_events = ["InsertLeave", "TextChanged"]
 " }}}
 
-" prettier plugin customization ---------------------- {{{
-    let g:prettier#exec_cmd_async = 1   " enable asynchronous execute
+" ale plugin customization ---------------------- {{{
+    let g:ale_linters = {
+    \   'javascript' : ['eslint'],
+    \}
 
-    " when running at every change you may want to disable quickfix
-    "let g:prettier#quickfix_enabled = 0
+    let g:ale_fixers = {
+    \   'javascript' : ['prettier', 'eslint'],
+    \}
 
-    "let g:prettier#autoformat = 0
-    "autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+    nnoremap <leader>p :ALEFix<cr>
+    " fix on save current disabled
+    "let g:ale_fix_on_save = 1
+    " Enable completion support
+    let g:ale_completion_enabled = 1
+
 " }}}
