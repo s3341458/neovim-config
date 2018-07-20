@@ -433,8 +433,8 @@ endif
 " }}}
 
 " nerd tree plugin customization ---------------------- {{{
-    " Ctrl + n toggle nerdTree
-    map <C-n> :NERDTreeToggle<CR>
+    " Ctrl + i toggle nerdTree
+    map <C-e> :NERDTreeToggle<CR>
 " }}}
 
 " ctrlp plugin customization ---------------------- {{{
