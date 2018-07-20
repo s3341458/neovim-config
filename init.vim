@@ -58,8 +58,10 @@ if dein#load_state('/home/chengyu/.config/nvim/dein/')
     call dein#add('easymotion/vim-easymotion')
     " auto save plugin save :w
     call dein#add('907th/vim-auto-save')
-    " add ale
+    " add ale (syntax checker framework)
     call dein#add('w0rp/ale')
+    " add multiple cursors (similar to sublime)
+    call dein#add('terryma/vim-multiple-cursors')
 
     " Required:
     call dein#end()
