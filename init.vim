@@ -113,12 +113,12 @@ function! TurnOnJumpNormalShortcuts()
 endfunction
 
 function! TurnOffJumpNormalShortcuts()
-    inoremap jk jk
-    inoremap jj jj
-    inoremap hh hh
-    inoremap lll lll
-    inoremap kk kk
-    inoremap kj kj
+    iunmap jk
+    iunmap jj
+    iunmap hh
+    iunmap lll
+    iunmap kk
+    iunmap kj
 endfunction
 
 
@@ -606,4 +606,26 @@ endfunction
     " Enable completion support
     let g:ale_completion_enabled = 1
 
+" }}}
+
+" vim-multiple-cursor plugin customization ---------------------- {{{
+    function! Multiple_cursors_before()
+        if exists(':NeoCompleteLock')==2
+            exe 'NeoCompleteLock'
+        endif
+        let g:multiple_cursor_disabled_jump = 0
+        if g:enable_jump_normal==1
+            call TurnOffJumpNormalShortcuts()
+            let g:multiple_cursor_disabled_jump = 1
+        endif
+    endfunction
+
+    function! Multiple_cursors_after()
+        if exists(':NeoCompleteUnlock')==2
+          exe 'NeoCompleteUnlock'
+        endif
+        if g:multiple_cursor_disabled_jump==1
+            call TurnOnJumpNormalShortcuts()
+        endif
+    endfunction
 " }}}
