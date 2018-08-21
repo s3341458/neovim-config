@@ -4,15 +4,15 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/home/chengyu/.config/nvim/dein//repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/dein//repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/home/chengyu/.config/nvim/dein/')
-    call dein#begin('/home/chengyu/.config/nvim/dein/')
+if dein#load_state('~/.config/nvim/dein/')
+    call dein#begin('~/.config/nvim/dein/')
 
     " Let dein manage dein
     " Required:
-    call dein#add('/home/chengyu/.config/nvim/dein//repos/github.com/Shougo/dein.vim')
+    call dein#add('~/.config/nvim/dein//repos/github.com/Shougo/dein.vim')
     " Add or remove your plugins here:
 
     " install nerd-tree
