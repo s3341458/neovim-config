@@ -17,6 +17,8 @@ if dein#load_state('~/.config/nvim/dein/')
 
     " install nerd-tree
     call dein#add('scrooloose/nerdtree')
+    " install nerd-tree excute
+    call dein#add('ivalkeen/nerdtree-execute')
     " install ctrlp
     call dein#add('kien/ctrlp.vim')
     " install surround
