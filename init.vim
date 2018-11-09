@@ -453,15 +453,8 @@ endif
 " emmet plugin customizations ---------------------- {{{
     let g:user_emmet_mode='a'    "enable all function in all mode.
 
-    " only when it is in html or css files
-    let g:user_emmet_install_global = 0
-    augroup emmet_only_on_html_css
-        autocmd!
-        autocmd FileType html,css EmmetInstall
-    augroup END
-    " remap the shortcut key rm
-    "let g:user_emmet_leader_key='<C-Y>'
-
+    " enable for all files
+    let g:user_emmet_install_global = 1
 " }}}
 
 " solarized plugin customization ---------------------- {{{
