@@ -64,6 +64,10 @@ if dein#load_state('~/.config/nvim/dein/')
     call dein#add('w0rp/ale')
     " add multiple cursors (similar to sublime)
     call dein#add('terryma/vim-multiple-cursors')
+    " add better javascript support since will have more js work
+    call dein#add('pangloss/vim-javascript')
+    " add better jsx support since will have more react work
+    call dein#add('mxw/vim-jsx')
 
     " Required:
     call dein#end()
@@ -600,7 +604,7 @@ endfunction
 
     nnoremap <leader>p :ALEFix<cr>
     " fix on save current disabled
-    "let g:ale_fix_on_save = 1
+    let g:ale_fix_on_save = 1
     " Enable completion support
     let g:ale_completion_enabled = 1
 
