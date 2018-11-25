@@ -103,6 +103,7 @@ let g:disable_arrow_keys = 1
 
 " pr means print
 iabbrev pr print()
+iabbrev cl console.log()
 
 " esc key broken
 noremap zz <esc>
