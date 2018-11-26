@@ -593,8 +593,8 @@ endfunction
 
 " ale plugin customization ---------------------- {{{
     let g:ale_linters = {
-    \   'javascript' : ['eslint'],
-    \   'python' : ['flake8'],
+      \   'javascript' : ['eslint'],
+      \   'python' : ['flake8'],
     \}
 
     let g:ale_fixers = {
@@ -608,6 +608,8 @@ endfunction
     let g:ale_fix_on_save = 1
     " Enable completion support
     let g:ale_completion_enabled = 1
+    " explicit lint
+    let g:ale_linters_explicit = 1
 
 " }}}
 
