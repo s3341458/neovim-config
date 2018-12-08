@@ -605,7 +605,7 @@ endfunction
 
     nnoremap <leader>p :ALEFix<cr>
     " fix on save current disabled
-    let g:ale_fix_on_save = 1
+    let g:ale_fix_on_save = 0
     " Enable completion support
     let g:ale_completion_enabled = 1
     " explicit lint
