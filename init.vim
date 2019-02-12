@@ -415,6 +415,9 @@ filetype plugin indent on
 " set my email address
 iabbrev @@ chengyu0316@gmail.com
 
+" set auto change dir
+set autochdir
+
 " Vimscript file settings ---------------------- {{{
  augroup filetype_vim
      autocmd!
