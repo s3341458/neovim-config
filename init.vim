@@ -594,14 +594,16 @@ endfunction
 " ale plugin customization ---------------------- {{{
     let g:ale_linters = {
       \   'javascript' : ['eslint'],
-      \   'python' : ['flake8'],
+      \   'python' : ['flake8', 'black', 'isort'],
     \}
 
     let g:ale_fixers = {
     \   'javascript' : ['prettier', 'eslint'],
-    \   'python' : ['autopep8'],
+    \   'python' : ['remove_trailing_lines', 'trim_whitespace',
+    \               'autopep8', 'black', 'isort'],
     \}
     let g:ale_python_autopep8_options = '--aggressive'
+    let g:ale_python_black_options = '-l 80'
 
     nnoremap <leader>p :ALEFix<cr>
     " fix on save current disabled
