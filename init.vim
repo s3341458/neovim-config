@@ -3,6 +3,7 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
+
 " Required:
 set runtimepath+=~/.config/nvim/dein//repos/github.com/Shougo/dein.vim
 
@@ -19,8 +20,6 @@ if dein#load_state('~/.config/nvim/dein/')
     call dein#add('scrooloose/nerdtree')
     " install nerd-tree excute
     call dein#add('ivalkeen/nerdtree-execute')
-    " install ctrlp
-    call dein#add('kien/ctrlp.vim')
     " install surround
     call dein#add('tpope/vim-surround')
     " install ag grepper
@@ -68,6 +67,13 @@ if dein#load_state('~/.config/nvim/dein/')
     call dein#add('pangloss/vim-javascript')
     " add better jsx support since will have more react work
     call dein#add('mxw/vim-jsx')
+    " better repeat
+    call dein#add('tpope/vim-repeat')
+    " For Denite features
+    "call dein#add('Shougo/denite.nvim')
+    " For Fuzzy file finder
+    call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+    call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 
     " Required:
     call dein#end()
@@ -245,8 +251,8 @@ nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 " short cut for edit vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
-" active vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
+" active vimrc (disable because conflicts with easy motion)
+"nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " - will move line to line blow
 nnoremap - ddp
@@ -444,13 +450,6 @@ endif
     map <C-e> :NERDTreeToggle<CR>
 " }}}
 
-" ctrlp plugin customization ---------------------- {{{
-    " almost ulimited search depth 40
-    let g:ctrlp_max_depth=40
-    " ulimited search files limit
-    let g:ctrlp_max_files=0
-" }}}
-"
 " tmux line plugin customization ---------------------- {{{
    let g:tmuxline_powerline_separators = 1
 " }}}
@@ -471,30 +470,6 @@ endif
     " to my most eye comfortable color
     let g:solarized_termtrans=1
     colorscheme solarized
-" }}}
-
-" ag plugin customization ---------------------- {{{
-
-nnoremap <leader>a :set operatorfunc=<SID>AgOperator<cr>g@
-vnoremap <leader>a :<c-u>call <SID>AgOperator(visualmode())<cr>
-
-function! s:AgOperator(type)
-    let saved_unnamed_register = @@
-
-    if a:type ==# 'v'
-            normal! `<v`>y
-    elseif a:type ==# 'char'
-            normal! `[v`]y
-    else
-            return
-    endif
-
-    execute "Ag -Q " . shellescape(@@) . " "
-    copen
-
-    let @@ = saved_unnamed_register
-endfunction
-
 " }}}
 
 " neocomplete plugin customization ---------------------- {{{
@@ -635,4 +610,42 @@ endfunction
             call TurnOnJumpNormalShortcuts()
         endif
     endfunction
+" }}}
+"
+" Fuzzy File Finder plugin customization ---------------------- {{{
+    nnoremap <c-p> :FZF<cr>
+
+    " Wrap Ag to fzf
+    command! -bang -nargs=* Fag
+      \ call fzf#vim#ag(<q-args>,
+      \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+      \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \                 <bang>0)
+
+" }}}
+
+" ag plugin customization ---------------------- {{{
+
+nnoremap <leader>A :set operatorfunc=<SID>AgOperator<cr>g@
+vnoremap <leader>A :<c-u>call <SID>AgOperator(visualmode())<cr>
+
+function! s:AgOperator(type)
+    let saved_unnamed_register = @@
+
+    if a:type ==# 'v'
+            normal! `<v`>y
+    elseif a:type ==# 'char'
+            normal! `[v`]y
+    else
+            return
+    endif
+
+    execute "Ag -Q " . shellescape(@@) . " "
+    copen
+
+    let @@ = saved_unnamed_register
+endfunction
+
+vnoremap a y:Fag <C-r>"
+
 " }}}
