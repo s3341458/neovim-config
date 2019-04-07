@@ -588,6 +588,8 @@ endif
     " explicit lint
     let g:ale_linters_explicit = 1
 
+    let g:ale_lint_delay = 500
+
 " }}}
 
 " vim-multiple-cursor plugin customization ---------------------- {{{
