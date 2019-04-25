@@ -559,6 +559,7 @@ endif
 " easy motion plugin customization ---------------------- {{{
 " no mapping confliction at the moment
     map <Leader> <Plug>(easymotion-prefix)
+    nmap s <Plug>(easymotion-overwin-f2)
 " }}}
 
 " auto save plugin customization ---------------------- {{{
