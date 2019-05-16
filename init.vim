@@ -292,6 +292,11 @@ onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F)vi(<cr>
 
 
+nnoremap <C-h> :vertical resize +5<cr>
+nnoremap <C-l> :vertical resize -5<cr>
+nnoremap <C-k> :resize +5<cr>
+nnoremap <C-j> :resize -5<cr>
+
 " }}}
 
 " terminal mod remaps of Cheng s3341458 ---------------------- {{{
