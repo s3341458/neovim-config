@@ -74,6 +74,9 @@ if dein#load_state('~/.config/nvim/dein/')
     " For Fuzzy file finder
     call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
     call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+    " For md file preview
+    call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
+					\ 'build': 'cd app & yarn install' })
 
     " Required:
     call dein#end()
@@ -155,7 +158,6 @@ nnoremap <F4> :call HighlightSearchToggle()<cr>
 nnoremap <F5> :call ArrowDisableToggle()<cr>
 " toggle whether use 4 spaces or 2 spaces for tab
 nnoremap <F6> :call TabStrategyToggle()<cr>
-
 
 " function for toggle customized motion shortcuts
 function! ToggleModeJump()
@@ -655,3 +657,4 @@ endfunction
 vnoremap a y:Fag <C-r>"
 
 " }}}
+"
