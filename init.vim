@@ -536,6 +536,7 @@ endif
 
 " ale plugin customization ---------------------- {{{
     let g:ale_linters = {
+      \   'typescript' : ['eslint'],
       \   'javascript' : ['eslint'],
       \   'python' : ['flake8', 'black', 'isort'],
     \}
