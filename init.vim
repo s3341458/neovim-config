@@ -234,14 +234,15 @@ call ArrowDisableToggle()
 call TurnOnJumpNormalShortcuts()
 
 " navigate to different window
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+nnoremap ˙ <C-w>h
+nnoremap ∆ <C-w>j
+nnoremap ˚ <C-w>k
+nnoremap ¬ <C-w>l
 
 " H move the first of the line, L move to the last of the line
 nnoremap H ^
 nnoremap L $
+
 
 " space to select the cursor in word
 noremap <space> viw
@@ -268,25 +269,25 @@ nnoremap = ddkP
 "nnoremap <leader>G :execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 
 " tab swtich shortcuts
-nnoremap <A-1> 1gt
-nnoremap <A-2> 2gt
-nnoremap <A-3> 3gt
-nnoremap <A-4> 4gt
-nnoremap <A-5> 5gt
-nnoremap <A-6> 6gt
-nnoremap <A-7> 7gt
-nnoremap <A-8> 8gt
-nnoremap <A-9> 9gt
-nnoremap <A-0> 10gt
-nnoremap <A-H> gT
-nnoremap <A-L> gt
+nnoremap ¡ 1gt
+nnoremap ™ 2gt
+nnoremap £ 3gt
+nnoremap ¢ 4gt
+nnoremap ∞ 5gt
+nnoremap § 6gt
+nnoremap ¶ 7gt
+nnoremap • 8gt
+nnoremap ª 9gt
+nnoremap º 10gt
+nnoremap Ó gT
+nnoremap Ò gt
 
 
 
 " shortcut for close tab
-nnoremap <A-q> :tabclose<cr>
+nnoremap œ :tabclose<cr>
 " shortcut for close window
-nnoremap <A-w> :wq<cr>
+nnoremap ∑ :wq<cr>
 
 
 " my operator from learn vimscript the hard way
@@ -304,13 +305,13 @@ nnoremap <C-j> :resize -5<cr>
 " terminal mod remaps of Cheng s3341458 ---------------------- {{{
 "
 " navigate to different window
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
+tnoremap ˙ <C-\><C-n><C-w>h
+tnoremap ∆ <C-\><C-n><C-w>j
+tnoremap ˚ <C-\><C-n><C-w>k
+tnoremap ¬ <C-\><C-n><C-w>l
 
 " shortcut for terminal emulator true normal mode
-tnoremap <A-n> <C-\><C-n>
+tnoremap ˜ <C-\><C-n>
 
 " }}}
 
@@ -622,7 +623,7 @@ vnoremap a y:Fag <C-r>"
 " coc plugin customization ---------------------- {{{
 " currently directly copied from https://github.com/neoclide/coc.nvim/blob/master/Readme.md
 " need more research for better fitting my needs
-    let g:coc_node_path = '/usr/bin/node'
+    let g:coc_node_path = '/usr/local/bin/node'
 
     " if hidden is not set, TextEdit might fail.
     set hidden
@@ -703,8 +704,8 @@ vnoremap a y:Fag <C-r>"
     augroup end
 
     " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-    "xmap <leader>a  <Plug>(coc-codeaction-selected)
-    "nmap <leader>a  <Plug>(coc-codeaction-selected)
+    xmap <leader>a  <Plug>(coc-codeaction-selected)
+    nmap <leader>a  <Plug>(coc-codeaction-selected)
 
     " Remap for do codeAction of current line
     nmap <leader>ac  <Plug>(coc-codeaction)
@@ -721,9 +722,9 @@ vnoremap a y:Fag <C-r>"
     command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
     " Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-    "nmap <silent> <TAB> <Plug>(coc-range-select)
-    "xmap <silent> <TAB> <Plug>(coc-range-select)
-    "xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+    nmap <silent> <TAB> <Plug>(coc-range-select)
+    xmap <silent> <TAB> <Plug>(coc-range-select)
+    xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
 
     " Add diagnostic info for https://github.com/itchyny/lightline.vim
     let g:lightline = {
@@ -739,21 +740,21 @@ vnoremap a y:Fag <C-r>"
 
     " Using CocList
     " Show all diagnostics
-    "nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+    nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
     " Manage extensions
-    "nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-    "" Show commands
-    "nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-    "" Find symbol of current document
-    "nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-    "" Search workspace symbols
-    "nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-    "" Do default action for next item.
-    "nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-    "" Do default action for previous item.
-    "nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-    "" Resume latest coc list
-    "nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+    nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+    " Show commands
+    nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+    " Find symbol of current document
+    nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+    " Search workspace symbols
+    nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+    " Do default action for next item.
+    nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+    " Do default action for previous item.
+    nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+    " Resume latest coc list
+    nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
 " }}}
