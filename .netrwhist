@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/chengyu/.config/nvim'
+let g:netrw_dirhist_5='/Users/chengyu/.config/nvim/dein'
+let g:netrw_dirhist_4='/Users/chengyu/projects/bc_frontend'
+let g:netrw_dirhist_3='/Users/chengyu'
+let g:netrw_dirhist_2='/Users/chengyu/.config/alacritty_bak1'
+let g:netrw_dirhist_1='/Users/chengyu/.config'
