@@ -56,8 +56,6 @@ if dein#load_state('~/.config/nvim/dein/')
     call dein#add('easymotion/vim-easymotion')
     " auto save plugin save :w
     call dein#add('907th/vim-auto-save')
-    " add ale (syntax checker framework)
-    call dein#add('w0rp/ale')
     " add multiple cursors (similar to sublime)
     call dein#add('terryma/vim-multiple-cursors')
     " add better javascript support since will have more js work
@@ -535,34 +533,20 @@ endif
 " }}}
 
 " auto save plugin customization ---------------------- {{{
+
+    function! ToggleAutoSave()
+        if g:auto_save
+            echo "disable auto save"
+            let g:auto_save = 0
+        else
+            echo "enable auto save"
+            let g:auto_save = 1
+        endif
+    endfunction
     let g:auto_save = 1  " enable AutoSave on Vim startup
     let g:auto_save_events = ["InsertLeave", "TextChanged"]
-" }}}
 
-" ale plugin customization ---------------------- {{{
-
-    let g:ale_linters = {
-      \   'javascript' : ['eslint'],
-      \   'typescript' : ['eslint'],
-      \   'python' : ['flake8', 'black', 'isort'],
-    \}
-
-    let g:ale_fixers = {
-    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-    \   'javascript' : ['prettier', 'eslint'],
-    \   'typescript' : ['prettier', 'eslint'],
-    \   'python' : ['remove_trailing_lines', 'trim_whitespace', 'autopep8', 'black', 'isort'],
-    \}
-    let g:ale_python_autopep8_options = '--aggressive'
-    let g:ale_python_black_options = '-l 79'
-
-    nnoremap <leader>p :ALEFix<cr>
-    " fix on save current disabled
-    let g:ale_fix_on_save = 0
-    " Enable completion support
-    let g:ale_completion_enabled = 1
-    " explicit lint
-    let g:ale_linters_explicit = 1
+    nnoremap <F1> :call ToggleAutoSave()<cr>
 
 " }}}
 
@@ -715,6 +699,20 @@ vnoremap a y:Fag <C-r>"
 " currently directly copied from https://github.com/neoclide/coc.nvim/blob/master/Readme.md
 " need more research for better fitting my needs
     let g:coc_node_path = '/usr/local/bin/node'
+
+    let g:coc_global_extensions = [
+    \ 'coc-tsserver',
+    \ 'coc-python'
+    \ ]
+
+    " add eslint and prettier if it is needed
+    if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+        let g:coc_global_extensions += ['coc-prettier']
+    endif
+
+    if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+      let g:coc_global_extensions += ['coc-eslint']
+    endif
 
     " if hidden is not set, TextEdit might fail.
     set hidden
