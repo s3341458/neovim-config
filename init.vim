@@ -540,19 +540,21 @@ endif
 " }}}
 
 " ale plugin customization ---------------------- {{{
+
     let g:ale_linters = {
       \   'javascript' : ['eslint'],
+      \   'typescript' : ['eslint'],
       \   'python' : ['flake8', 'black', 'isort'],
     \}
 
     let g:ale_fixers = {
+    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
     \   'javascript' : ['prettier', 'eslint'],
     \   'typescript' : ['prettier', 'eslint'],
-    \   'python' : ['remove_trailing_lines', 'trim_whitespace',
-    \               'autopep8', 'black', 'isort'],
+    \   'python' : ['remove_trailing_lines', 'trim_whitespace', 'autopep8', 'black', 'isort'],
     \}
     let g:ale_python_autopep8_options = '--aggressive'
-    let g:ale_python_black_options = '-l 80'
+    let g:ale_python_black_options = '-l 79'
 
     nnoremap <leader>p :ALEFix<cr>
     " fix on save current disabled
