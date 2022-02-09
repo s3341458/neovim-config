@@ -62,8 +62,6 @@ if dein#load_state('~/.config/nvim/dein/')
     call dein#add('pangloss/vim-javascript')
     " add better jsx support since will have more react work
     call dein#add('mxw/vim-jsx')
-    " add better typescript support since will have more react work
-    call dein#add('leafgarland/typescript-vim')
     " better repeat
     call dein#add('tpope/vim-repeat')
     " For Denite features
@@ -77,7 +75,6 @@ if dein#load_state('~/.config/nvim/dein/')
 
     " For typescript syntax highlight
     call dein#add('HerringtonDarkholme/yats.vim')
-    call dein#add('mhartington/nvim-typescript', {'build': './install.sh'})
 
     " Required:
     call dein#end()
@@ -543,7 +540,7 @@ endif
             let g:auto_save = 1
         endif
     endfunction
-    let g:auto_save = 1  " enable AutoSave on Vim startup
+    let g:auto_save = 0  " enable AutoSave on Vim startup
     let g:auto_save_events = ["InsertLeave", "TextChanged"]
 
     nnoremap <F1> :call ToggleAutoSave()<cr>
@@ -725,7 +722,7 @@ vnoremap a y:Fag <C-r>"
     set cmdheight=2
 
     " You will have bad experience for diagnostic messages when it's default 4000.
-    set updatetime=300
+    set updatetime=1000
 
     " don't give |ins-completion-menu| messages.
     set shortmess+=c
